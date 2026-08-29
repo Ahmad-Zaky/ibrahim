@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="favicon.ico">
+	<title>Youssof Qur'an Follow Up</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		body, html {
+			background-image: url("background.jpg");
+			background-color: #ffe59b00;
+			background-repeat: no-repeat;
+			background-size: cover;
+			height: 100%;
+			margin: 0%;
+		}
+		
+		.container {		
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		
+		.primary-font-size {
+			font-size: 0.6cm;
+		}
+
+		.primary-color {
+			color: #af8868;
+		}
+
+		.center {
+			text-align: center;
+		}
+		
+		.w-100 {
+			width: 100%
+		}
+		
+		.h-100 {
+			height: 100%
+		}
+
+		.circled-shadow {
+			width: 100%;
+			text-align: center;
+			font-size: 55px;
+			cursor: pointer;
+			user-select: none;
+			width: 60px;
+			height: 60px;
+			display: inline-block;
+			border-radius: 50%;
+  			box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+		}
+
+		.sheet {
+			width: 1000px;
+			height: 25em;
+		}
+
+		.shadow {
+			box-shadow:
+				0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+				0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+				0 12.5px 10px rgba(0, 0, 0, 0.06),
+				0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+				0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+				0 100px 80px rgba(0, 0, 0, 0.12);
+		}
+		
+		.icon {
+			font-size:36px;
+			vertical-align: middle;
+			text-align: center;
+			line-height: 65px;
+		}
+		
+		.mt-1 {
+			margin-top: 1em;
+		}
+
+		.border-rd-5 {
+			border-radius: 10px;
+		}
+
+		.hide {
+			display: none;
+		}
+
+		@media only screen and (max-width: 1000px) {
+			.sheet {
+				width: 900px;
+				height: 700px;
+			}
+		}
+		
+		@media only screen and (max-width: 900px) {
+			.sheet {
+				width: 700px;
+				height: 700px;
+			}
+		}
+
+		@media only screen and (max-width: 700px) {
+			.sheet {
+				width: 600px;
+				height: 600px;
+			}
+		}
+
+		@media only screen and (max-width: 600px) {
+			.sheet {
+				width: 500px;
+				height: 500px;
+			}
+		}
+
+		@media only screen and (max-width: 400px) {
+			.sheet {
+				width: 100%;
+				height: 300px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container h-100">
+		<div class="primary-color primary-font-size">
+			<h1 class="center">Youssof Qur'an Follow up</h1>
+			<h1 class="center">
+				<span id="sub" class="circled-shadow hide" style="font-weight:600">-</span>
+				<a id="count" href="" style="text-decoration:none" class="primary-color circled-shadow hide" target="_blank">0</a>
+				<span id="add" class="circled-shadow hide" style="font-weight:600">+</span>
+			</h1>
+			<div class="center">
+				<div id="reset" class="circled-shadow hide icon">
+					<i class="fa fa-undo"></i>
+				</div>
+				
+				<div id="notify" class="circled-shadow hide icon">
+					<i class="fa fa-bell"></i>
+				</div>
+				
+				<div id="repo" class="circled-shadow hide icon">
+					<a href="https://github.com/Ahmad-Zaky/youssof" style="text-decoration:none" class="primary-color hide" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+				</div>
+			</div>
+			<iframe id="sheet-frame" class="sheet w-100 h-100 shadow border-rd-5 mt-1 hide" src=""></iframe>
+		</div>
+	</div>
+</body>
+	<script>
+		var lessonsCount = 0;
+		const owner = "Ahmad-Zaky";
+		const repo = "ibraim";
+		const count = '1';
+		const addWorkflowId = '80860767';
+		const subWorkflowId = '80860770';
+		const resetWorkflowId = '80860769';
+		const notifyWorkflowId = '80860768';
+		const email = "hishamabdelhafez@gmail.com";
+		const msg = `Quran Lessons for Ibrahim has reached {0} lessons`;
+
+		login();
+
+		// Add Count
+		function addCount() {
+			fetch(`https://api.github.com/repos/${owner}/${repo}/actions/workflows/${addWorkflowId}/dispatches`, requestOptions)
+				.then(response => response.text())
+				.then(result => window.location.reload())
+				.catch(error => console.log('error', error));
+		}
+
+		// Subtract Count
+		function subCount() {
+			fetch(`https://api.github.com/repos/${owner}/${repo}/actions/workflows/${subWorkflowId}/dispatches`, requestOptions)
+				.then(response => response.text())
+				.then(result => window.location.reload())
+				.catch(error => console.log('error', error));
+		}
+
+		// Reset Count
+		function resetCount() {
+			fetch(`https://api.github.com/repos/${owner}/${repo}/actions/workflows/${resetWorkflowId}/dispatches`, requestOptions)
+				.then(response => response.text())
+				.then(result => window.location.reload())
+				.catch(error => console.log('error', error));
+		}
+
+		// Notify
+		function notify() {
+			var notifyRaw = JSON.stringify({
+				"ref": "main",
+				"inputs": {
+					"to": email,
+					"msg": formatString(msg, lessonsCount)
+				}
+			});
+
+			var notifyRequestOptions = {
+				method: 'POST',
+				headers: myHeaders,
+				body: notifyRaw,
+				redirect: 'follow'
+			};
+
+			fetch(`https://api.github.com/repos/${owner}/${repo}/actions/workflows/${notifyWorkflowId}/dispatches`, notifyRequestOptions)
+				.then(response => response.text())
+				.then(result => window.location.reload())
+				.catch(error => console.log('error', error));
+		}
+
+		const urlParams = new URLSearchParams(window.location.search);
+		if (urlParams.has("admin") && urlParams.has("pat")) {
+			const PAT = urlParams.get("pat");
+
+			var myHeaders = new Headers();
+			myHeaders.append("Accept", "application/vnd.github+json");
+			myHeaders.append("Authorization", `Bearer ${PAT}`);
+			myHeaders.append("X-GitHub-Api-Version", "2022-11-28");
+			myHeaders.append("Content-Type", "application/json");
+
+			var raw = JSON.stringify({
+				"ref": "main",
+				"inputs": {
+					"count": count
+				}
+			});
+
+			var requestOptions = {
+				method: 'POST',
+				headers: myHeaders,
+				body: raw,
+				redirect: 'follow'
+			};
+
+			const hiddenElements = document.querySelectorAll(".hide");
+			for (const element of hiddenElements) {
+				element.classList.remove("hide");
+			}
+
+			document.getElementById("add").addEventListener("click", function() {
+				addCount()
+			});
+
+			document.getElementById("sub").addEventListener("click", function() {
+				subCount()
+			});
+
+			document.getElementById("reset").addEventListener("click", function() {
+				resetCount()
+			});
+
+			document.getElementById("notify").addEventListener("click", function() {
+				notify()
+			});
+		}
+
+		function login() {
+			const urlParams = new URLSearchParams(window.location.search);
+			if (! urlParams.has("token")) {
+				return;
+			}
+
+			const token = urlParams.get("token");
+
+			const parts = token.split("@");
+			if (parts.length !== 2) {
+				return;
+			}
+
+			fetch('./count.txt?time='+Date.now())
+			  .then(response => response.text())
+			  .then(count => document.getElementById('count').textContent = lessonsCount = count);
+
+			const countLinkToken = parts[0];
+			const sheetFrameToken = parts[1];
+
+			setCountHref(countLinkToken);
+			setIframeSrc(sheetFrameToken);
+		}
+
+		function setCountHref(countLinkToken) {
+			const element = document.getElementById("count");
+			element.href = `https://docs.google.com/spreadsheets/d/${countLinkToken}/edit?usp=sharing`;
+			element.classList.remove("hide");
+		}
+
+		function setIframeSrc(sheetFrameToken) {
+			const element = document.getElementById("sheet-frame");
+			element.src = `https://docs.google.com/spreadsheets/d/e/${sheetFrameToken}/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false`;
+			element.classList.remove("hide");
+		}
+
+		const formatString = (template, ...args) => {
+		  return template.replace(/{([0-9]+)}/g, function (match, index) {
+		    return typeof args[index] === 'undefined' ? match : args[index];
+		  });
+		}
+	</script>
+</html>
