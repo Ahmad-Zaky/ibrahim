@@ -38,7 +38,7 @@ jobs:
           export COUNT=${{ steps.add_count.outputs.count }}
           export OWNER="Ahmad-Zaky"
           export REPO="ibrahim"
-          export WORKFLOW_ID="80860768"
+          export WORKFLOW_ID="345389339"
           export MSG="Quran lesson reached $COUNT lessons"
           export EMAIL="hishamabdelhafez@gmail.com"
           curl --location 'https://api.github.com/repos/'"$OWNER"'/'"$REPO"'/actions/workflows/'"$WORKFLOW_ID"'/dispatches' \
